@@ -20,4 +20,5 @@ export default LikeComp;
 
 const Like = styled(AiTwotoneLike)`
     font-size: 20px;
+    cursor: pointer;
 `;

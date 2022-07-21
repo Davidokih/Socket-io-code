@@ -29,7 +29,7 @@ const Card = () => {
             setData([ ...data, newData ]);
             console.log(newData);
         });
-    }, []);
+    }, [ data ]);
     return (
         <Container>
             <InputHold>
