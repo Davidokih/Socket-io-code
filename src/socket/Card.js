@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { AiFillDislike, AiTwotoneLike } from "react-icons/ai";
 import { io } from "socket.io-client";
+import LikeComp from './LikeComp';
 
 import axios from 'axios';
 const socket = io("http://localhost:2000");
@@ -19,9 +20,7 @@ const Card = () => {
     const dataPost = () => {
         axios.post("http://localhost:2000/api/create", { name: text });
     };
-    const likePost = () => {
-        axios.post("http://localhost:2000/api/62d817530e3e80f9943b9212/like");
-    };
+
 
     useEffect(() => {
         getData();
@@ -33,7 +32,6 @@ const Card = () => {
     }, []);
     return (
         <Container>
-
             <InputHold>
                 <div>
                     Enter Your Name
@@ -51,10 +49,10 @@ const Card = () => {
                     <User>{ props.name }</User>
 
                     <LikeHold>
-                        <div>
-                            <Like onClick={ likePost } />
+                        <Div>
+                            <LikeComp props={ props } />
                             { props.like.length }
-                        </div>
+                        </Div>
                         {/* <div>
                         <Disike />
                         0
@@ -74,6 +72,9 @@ const Input = styled.input`
     height: 20px;
     margin: 20px;
     outline: none;
+`;
+const Div = styled.div`
+    display: flex;
 `;
 const InputHold = styled.div`
     display: flex;
